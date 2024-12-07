@@ -33,3 +33,5 @@ const fetchData = async () => {
     // Handle error
   }
 };
+
+fetchData();
