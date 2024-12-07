@@ -12,13 +12,19 @@ const fetchData = async () => {
     const students = data.results;
     students.forEach(student => {
       const row = document.createElement('tr');
+      const year = student.year || ""; // Handle missing year data with empty string
+      const semester = student.Semester || ""; // Handle missing semester data with empty string
+      const program = student["the_Programs"] || ""; // Access with quotes and underscore
+      const nationality = student.Nationality || ""; // Handle missing nationality data with empty string
+      const college = student.Colleges || ""; // Handle missing college data with empty string
+      const studentCount = student["Number_of_students"] || ""; // Access with quotes and underscores
       row.innerHTML = `
-        <td>${student.year}</td>
-        <td>${student.Semester}</td>
-        <td>${student["the Programs"]}</td>
-        <td>${student.Nationality}</td>
-        <td>${student.Colleges}</td>
-        <td>${student["Number of students"]}</td>
+        <td>${year}</td>
+        <td>${semester}</td>
+        <td>${program}</td>
+        <td>${nationality}</td>
+        <td>${college}</td>
+        <td>${studentCount}</td>
       `;
       studentDataElement.appendChild(row);
     });
@@ -27,5 +33,3 @@ const fetchData = async () => {
     // Handle error
   }
 };
-
-fetchData();
